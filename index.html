@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GreenWorld Enterprise</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f9f4;
+}
+
+header {
+    background: linear-gradient(45deg,#2e7d32,#1b5e20);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+section {
+    padding: 40px 20px;
+}
+
+.hero {
+    text-align: center;
+    background: #e8f5e9;
+}
+
+.plants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    width: 230px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card button {
+    margin: 8px;
+    padding: 8px 12px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart {
+    background: #e8f5e9;
+}
+
+.cart-item {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-plus { background: green; color: white; }
+.btn-minus { background: orange; color: white; }
+.btn-remove { background: red; color: white; }
+
+.payment-select {
+    padding: 10px;
+    width: 250px;
+    margin-top: 10px;
+}
+
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+@media(max-width:768px){
+.plants{flex-direction:column;align-items:center;}
+.card{width:90%;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>🌿 GreenWorld Enterprise</h2>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#shop">Shop</a>
+<a href="#blog">Blog</a>
+<a href="#contact">Contact</a>
+<a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero">
+<h1>Welcome to GreenWorld Enterprise 🌱</h1>
+<p>Your trusted professional plant company providing quality indoor, outdoor and garden solutions.</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+<p>GreenWorld Enterprise is a professional plant company delivering high quality plants, gardening tools and eco-friendly solutions. We serve thousands of happy customers with healthy and fresh plants.</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2>Our Services</h2>
+<ul>
+<li>Indoor & Outdoor Plant Supply</li>
+<li>Garden Setup & Landscaping</li>
+<li>Plant Maintenance Services</li>
+<li>Home & Office Decoration</li>
+<li>Bulk Plant Orders</li>
+</ul>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section>
+<h2>Why Choose Us</h2>
+<ul>
+<li>🌱 High Quality Healthy Plants</li>
+<li>🚚 Fast & Safe Delivery</li>
+<li>💰 Affordable Pricing</li>
+<li>⭐ Trusted by 10,000+ Customers</li>
+</ul>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+<h2>Shop Plants</h2>
+<div class="plants">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593691509543-c55fb32b1f7c">
+<h3>Snake Plant</h3>
+<p>$20</p>
+<button onclick="addToCart('Snake Plant',20)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601985705806-5b9a71f6004f">
+<h3>Areca Palm</h3>
+<p>$30</p>
+<button onclick="addToCart('Areca Palm',30)">Add to Cart</button>
+</div>
+
+</div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+<h2>Our Blog</h2>
+<p>🌿 How to care for indoor plants.<br>
+🌿 Benefits of medicinal plants.<br>
+🌿 Gardening tips for beginners.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact Details</h2>
+<p><strong>Address:</strong> Brahmapuri, Maharashtra</p>
+<p><strong>Phone:</strong> +91 8830127347</p>
+<p><strong>Email:</strong> greenworld@email.com</p>
+</section>
+
+<!-- CART -->
+<section id="cart" class="cart">
+<h3>Your Cart 🛒</h3>
+<div id="cart-items"></div>
+<h4>Total: $<span id="total">0</span></h4>
+
+<h4>Select Payment Method:</h4>
+<select class="payment-select">
+<option>-- Select Payment --</option>
+<option>UPI</option>
+<option>Payment URL</option>
+<option>Credit / Debit Card</option>
+<option>ATM Card</option>
+<option>QR Code</option>
+</select>
+</section>
+<!-- ALL PLANT CATEGORIES -->
+<section id="all-categories">
+<h2>All Plant Categories</h2>
+
+<<!-- Aloe Vera -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587502536263-9298b6b2f8c5">
+<h3>Aloe Vera</h3>
+<p>$18</p>
+<button onclick="addToCart('Aloe Vera',18)">Add to Cart</button>
+</div>
+
+<!-- Peace Lily -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b">
+<h3>Peace Lily</h3>
+<p>$22</p>
+<button onclick="addToCart('Peace Lily',22)">Add to Cart</button>
+</div>
+
+<!-- Money Plant -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1616628182501-9f0f8b8b7c6f">
+<h3>Money Plant</h3>
+<p>$16</p>
+<button onclick="addToCart('Money Plant',16)">Add to Cart</button>
+</div>
+
+<!-- Bamboo Plant -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1597055181300-e3633c6e1c2c">
+<h3>Lucky Bamboo</h3>
+<p>$14</p>
+<button onclick="addToCart('Lucky Bamboo',14)">Add to Cart</button>
+</div>
+
+<!-- Jasmine -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+<h3>Jasmine Flower</h3>
+<p>$19</p>
+<button onclick="addToCart('Jasmine Flower',19)">Add to Cart</button>
+</div>
+
+<!-- Hibiscus -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+<h3>Hibiscus</h3>
+<p>$21</p>
+<button onclick="addToCart('Hibiscus',21)">Add to Cart</button>
+</div>
+
+<!-- Neem Plant -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598515214211-89d3f6e4e7f5">
+<h3>Neem Plant</h3>
+<p>$28</p>
+<button onclick="addToCart('Neem Plant',28)">Add to Cart</button>
+</div>
+
+<!-- Lavender -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1491002052546-bf38f186af56">
+<h3>Lavender</h3>
+<p>$24</p>
+<button onclick="addToCart('Lavender',24)">Add to Cart</button>
+</div>
+
+<!-- Orchid -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92">
+<h3>Orchid</h3>
+<p>$35</p>
+<button onclick="addToCart('Orchid',35)">Add to Cart</button>
+</div>
+
+<!-- Bonsai -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3">
+<h3>Bonsai Tree</h3>
+<p>$40</p>
+<button onclick="addToCart('Bonsai Tree',40)">Add to Cart</button>
+</div>>
+
+<!-- Indoor Plants -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593691509543-c55fb32b1f7c">
+<h3>Snake Plant</h3>
+<p>$20</p>
+<button onclick="addToCart('Snake Plant',20)">Add to Cart</button>
+</div>
+
+<!-- Outdoor Plants -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1601985705806-5b9a71f6004f">
+<h3>Areca Palm</h3>
+<p>$30</p>
+<button onclick="addToCart('Areca Palm',30)">Add to Cart</button>
+</div>
+
+<!-- Succulent -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+<h3>Cactus</h3>
+<p>$15</p>
+<button onclick="addToCart('Cactus',15)">Add to Cart</button>
+</div>
+
+<!-- Herb -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1587049352851-8d4e89133924">
+<h3>Mint Plant</h3>
+<p>$10</p>
+<button onclick="addToCart('Mint Plant',10)">Add to Cart</button>
+</div>
+
+<!-- Tree -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1598514982901-5c5a0f7f42f2">
+<h3>Mango Tree</h3>
+<p>$45</p>
+<button onclick="addToCart('Mango Tree',45)">Add to Cart</button>
+</div>
+
+<!-- Medicinal -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449">
+<h3>Tulsi Plant</h3>
+<p>$12</p>
+<button onclick="addToCart('Tulsi Plant',12)">Add to Cart</button>
+</div>
+
+<!-- Flowering Plants -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946">
+<h3>Rose Plant</h3>
+<p>$25</p>
+<button onclick="addToCart('Rose Plant',25)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6">
+<h3>Tulip</h3>
+<p>$22</p>
+<button onclick="addToCart('Tulip',22)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d">
+<h3>Sunflower</h3>
+<p>$18</p>
+<button onclick="addToCart('Sunflower',18)">Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1468327768560-75b778cbb551">
+<h3>Lily Flower</h3>
+<p>$20</p>
+<button onclick="addToCart('Lily Flower',20)">Add to Cart</button>
+</div>
+
+</div>
+</section>
+
+
+<!-- LOCATION SECTION -->
+<section id="location">
+<h2>📍 Our Store Location</h2>
+<p><strong>Address:</strong> Brahmapuri, Maharashtra</p>
+
+<div style="margin-top:20px; border-radius:10px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+<iframe 
+src="https://maps.google.com/maps?q=Brahmapuri%20Maharashtra&output=embed"
+width="100%" 
+height="350" 
+style="border:0;" 
+allowfullscreen="" 
+loading="lazy">
+</iframe>
+</div>
+</section>
+
+<footer>
+© 2026 GreenWorld Enterprise | All Rights Reserved
+</footer>
+
+<script>
+let cart=[];
+
+function addToCart(name,price){
+let item=cart.find(p=>p.name===name);
+if(item){item.qty++;}
+else{cart.push({name,price,qty:1});}
+updateCart();
+}
+
+function updateCart(){
+let cartDiv=document.getElementById("cart-items");
+cartDiv.innerHTML="";
+let total=0;
+
+cart.forEach(item=>{
+total+=item.price*item.qty;
+cartDiv.innerHTML+=`
+<div class="cart-item">
+<div>
+<strong>${item.name}</strong><br>
+$${item.price} x ${item.qty}
+</div>
+<div>
+<button class="btn-plus" onclick="changeQty('${item.name}','inc')">+</button>
+<button class="btn-minus" onclick="changeQty('${item.name}','dec')">-</button>
+<button class="btn-remove" onclick="removeItem('${item.name}')">Remove</button>
+</div>
+</div>`;
+});
+
+document.getElementById("total").textContent=total;
+document.getElementById("cart-count").textContent=cart.length;
+}
+
+function changeQty(name,action){
+let item=cart.find(p=>p.name===name);
+if(!item)return;
+if(action==="inc")item.qty++;
+if(action==="dec"){
+item.qty--;
+if(item.qty<=0)removeItem(name);
+}
+updateCart();
+}
+
+function removeItem(name){
+cart=cart.filter(p=>p.name!==name);
+updateCart();
+}
+</script>
+
+</body>
+</html>
